@@ -26,13 +26,23 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = true
+        compose = true
+    }
+
     buildTypes {
+        debug {
+            buildConfigField("String", "WEBVIEW_URL", "\"https://www.monnawa.com\"")
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "WEBVIEW_URL", "\"https://www.monnawa.com\"")
         }
     }
     compileOptions {
